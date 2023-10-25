@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+
 *,
 ::before,
 ::after {
@@ -11,7 +12,7 @@ body {
   background: #f6f6f6;
 }
 
-.header {
+header {
   font-family: "Shrikhand", serif;
   box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.2);
   position: relative;
@@ -42,7 +43,7 @@ body {
   flex-direction: column;
 }
 
-main .location {
+.main .location {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,7 +52,7 @@ main .location {
   margin-bottom: 2rem;
 }
 
-main .location-city {
+.main .location .location-city {
   margin-left: 13px;
   font-weight: 400;
 }
