@@ -1,0 +1,22 @@
+{
+  "name": "projetohmyfood",
+  "version": "1.0.0",
+  "description": "'projetOC4'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dimple3377/OC-ohmyfood-project-4.git"
+  },
+  "author": "Dimple",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dimple3377/OC-ohmyfood-project-4/issues"
+  },
+  "homepage": "https://github.com/Dimple3377/OC-ohmyfood-project-4#readme",
+  "devDependencies": {
+    "sass": "^1.69.4"
+  }
+}
