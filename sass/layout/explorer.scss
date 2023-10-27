@@ -1,4 +1,8 @@
-.explorer {
+   
+    @use "../utils/box-shadow.scss" ; 
+    @use "../utils/zoom.scss";
+
+    .explorer {
     text-align: center;
     max-width: 19rem;
     & button {
@@ -9,9 +13,9 @@
      font-size: 1rem;
      border-radius: 2rem;
      background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
-     box-shadow: 2px 1px 14px -4px #000000;
      transition: all 180ms;
      margin-top: 1rem;
+     @include box-shadow.base-shadow;
      }
    & button:hover {
        transform: scale(1.01);

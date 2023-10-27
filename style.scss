@@ -1,8 +1,8 @@
-@import "./sass/base";
-@import "./sass/layout/header";
-@import "./sass/layout/explorer";
-@import "./sass/layout/location.scss";
-
+@use "./sass/base";
+@use "./sass/layout/header";
+@use "./sass/layout/explorer";
+@use "./sass/layout/location";
+@use "./sass/components/process";
 
 
 

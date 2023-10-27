@@ -54,9 +54,9 @@ header {
   font-size: 1rem;
   border-radius: 2rem;
   background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
-  box-shadow: 2px 1px 14px -4px #000000;
   transition: all 180ms;
   margin-top: 1rem;
+  box-shadow: 2px 1px 14px -4px #000000;
 }
 .explorer button:hover {
   transform: scale(1.01);
@@ -75,6 +75,23 @@ header {
 .location .location-city {
   margin-left: 13px;
   font-weight: 400;
+}
+
+.process ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.process li {
+  background-color: #f6f6f6;
+  padding: 1rem 2rem;
+  border: 1px solid red;
+  flex-grow: 0.77;
+  border-radius: 1rem;
+  box-shadow: 2px 1px 14px -4px #000000;
+}
+.process li:hover {
+  transform: scale(1.02);
 }
 
 /*# sourceMappingURL=style.css.map */
