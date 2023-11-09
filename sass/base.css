@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: "Roboto", sans-serif;
+  background: #f6f6f6;
+}
+
+.main {
+  margin: 0;
+  padding: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}/*# sourceMappingURL=base.css.map */
