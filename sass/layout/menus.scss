@@ -1,3 +1,4 @@
+@use "../utils/colors";
 .menus {
     background-color: #f6f6f6;
     h2 {
@@ -9,9 +10,24 @@
     grid-template-columns: repeat(1,1);
     gap: 5rem;
 }
+.new {
+    position: relative;
+}
+.new::before {
+    content: "nouveau";
+    position: absolute;
+    height: 2rem;
+    width: 5rem;
+    background-color: colors.$tertiary;
+    color: darken(colors.$tertiary, 50%);
+    display: grid;
+    place-items: center;
+    right: 1rem;
+    top: 1rem;
+    }
 .card {
     & .card__image {
-    border-radius: 1rem;
+    border-radius: 1rem 1rem 0 0;
     height: 13rem;
     flex-grow: 1;
     min-width: 20rem;
@@ -21,6 +37,23 @@
         background-image: url("../../assets/menu-#{$i}.jpg");
         height: 15rem;
         background-size: cover;
+    }
+}
+&__description {
+    position: relative;
+    h3,
+    p {
+        margin: 0.5rem;
+    }
+    h3 {
+        padding-top: 0.5rem;
+    }
+    i {
+        font-size: 1.3rem;
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
 }
