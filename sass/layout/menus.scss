@@ -1,19 +1,22 @@
+@use "../utils/variables";
 @use "../utils/colors";
-.menus {
-    background-color: #f6f6f6;
-    h2 {
-        margin-bottom: 2rem;
-    }
+@use "../utils/mixins";
 
-.menus__cards {
+.menus {
+  background-color: #f6f6f6;
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  .menus__cards {
     display: grid;
-    grid-template-columns: repeat(1,1);
-    gap: 5rem;
-}
-.new {
+    grid-template-columns: repeat(1, 1);
+    gap: 2rem;
+  }
+  .new {
     position: relative;
-}
-.new::before {
+  }
+  .new::before {
     content: "nouveau";
     position: absolute;
     height: 2rem;
@@ -24,37 +27,46 @@
     place-items: center;
     right: 1rem;
     top: 1rem;
-    }
-.card {
+  }
+  .card {
     & .card__image {
-    border-radius: 1rem 1rem 0 0;
-    height: 13rem;
-    flex-grow: 1;
-    min-width: 20rem;
+      border-radius: 1rem 1rem 0 0;
+      height: 13rem;
+      flex-grow: 1;
+      min-width: 20rem;
     }
     @for $i from 1 through 4 {
-        &__image-#{$i} {
+      &__image-#{$i} {
         background-image: url("../../assets/menu-#{$i}.jpg");
         height: 15rem;
         background-size: cover;
+      }
     }
-}
-&__description {
-    position: relative;
-    h3,
-    p {
-        margin: 0.5rem;
+    &__description {
+      position: relative;
+      background-color: white;
+      border-radius: 0 0 1rem 1rem;
+      &::before {
+        @include mixins.heart;
+      }
+
+      &::after {
+        @include mixins.heart(
+          $opacity: 0,
+          $font-weight: 900,
+          $color: transparent
+        );
+        @include mixins.gradient;
+      }
+      &:hover::after {
+        opacity: 1;
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      h3,
+      p {
+        padding: 0.5rem;
+      }
     }
-    h3 {
-        padding-top: 0.5rem;
-    }
-    i {
-        font-size: 1.3rem;
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-}
-}
+  }
 }

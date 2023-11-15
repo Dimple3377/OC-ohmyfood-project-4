@@ -7,21 +7,15 @@
   
 }
 body {
-  margin: 0px;
+  margin: 0;
   font-family: 'Roboto', sans-serif;
   background: #f6f6f6;
 }
 .main {
   margin: 0;
+  padding: 0 1rem;
 
-  display: flex;
 
-
-  justify-content: center;
-  
-align-items: center;
- 
-flex-direction: column;
 }
 h2 {
   margin: 2rem;
@@ -29,6 +23,7 @@ h2 {
 
 h3,
 p { 
+  padding: 0.5rem;
   margin: 0;
 
 }

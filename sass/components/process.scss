@@ -1,54 +1,51 @@
-@use "../utils/box-shadow";
-@use "../utils/zoom";
+@use "../utils/mixins";
 @use "../utils/variables";
 @use "../utils/colors";
 
-
 .process {
-    counter-reset: steps;
-    margin-bottom: 2rem;
+  counter-reset: steps;
+  margin-bottom: 2rem;
 
-    & ol {
-        display: grid;
-        gap: 2rem;
+  & ol {
+    display: grid;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  & li {
+    position: relative;
+
+    &::before {
+      content: counter(steps);
+      counter-increment: steps;
+      color: white;
+      background-color: colors.$purple;
+      width: 2 * variables.$process-bullet-height;
+      height: 2 * variables.$process-bullet-height;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: -1 * variables.$process-bullet-height;
+      transform: translateY(-50%);
     }
 
-    & li {
-        position: relative;
+    list-style-type: none;
+    background-color: #f6f6f6;
+    padding: 1.5rem 2rem;
+    flex-grow: 0.77;
+    border-radius: 1rem;
+    @include mixins.base-shadow;
 
-        &::before {
-            content: counter(steps);
-            counter-increment: steps;
-            color: white;
-            background-color: colors.$purple;
-            width: 2 * variables.$process-bullet-height;
-            height: 2 * variables.$process-bullet-height;
-            display: grid;
-            place-items: center;
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: -1 * variables.$process-bullet-height;
-            transform: translateY(-50%);
-           
-       }
-
-        list-style-type: none;
-        background-color: #f6f6f6;
-        padding: 1.5rem 2rem;
-        flex-grow: 0.77;
-        border-radius: 1rem;
-        @include box-shadow.base-shadow;
-        
-        &:hover {
-            @include zoom.change-zoom;
-        }
-
-        & i.fas {
-            margin-right: 1rem;
-            color: colors.$light-grey;
-            font-size: 1.5rem;
-        }
+    &:hover {
+      @include mixins.change-zoom;
     }
 
+    & i.fas {
+      margin-right: 1rem;
+      color: colors.$light-grey;
+      font-size: 1.5rem;
+    }
+  }
 }

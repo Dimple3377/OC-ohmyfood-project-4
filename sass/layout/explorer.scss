@@ -1,10 +1,9 @@
-   
-    @use "../utils/box-shadow.scss" ; 
-    @use "../utils/zoom.scss";
+    @use "../utils/zoom";
+    @use "../utils/mixins";
 
     .explorer {
     text-align: center;
-    max-width: 19rem;
+    max-width: 24rem;
     & button {
         color: white;
         border: none;
@@ -12,10 +11,10 @@
      font-weight: 500;
      font-size: 1rem;
      border-radius: 2rem;
-     background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
      transition: all 180ms;
      margin-top: 1rem;
-     @include box-shadow.base-shadow;
+     @include mixins.base-shadow;
+     @include mixins.gradient;
      }
    & button:hover {
        transform: scale(1.01);
