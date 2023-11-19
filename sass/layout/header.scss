@@ -9,6 +9,10 @@ header {
   align-items: center;
     height: 80px;
     width: 100%;
+     @media (min-width: 800px) {
+      box-shadow: none;
+     }
+ 
 }
 * a {
   text-decoration: none;

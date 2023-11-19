@@ -2,14 +2,32 @@
 
 footer {
   background-color: colors.$darkgrey;
+  @media (min-width: 800px) {
   padding: 0rem 3rem;
+  }
   color: white;
   h2 {
     font-family: "Shrikhand", "sans-serif";
     font-weight: 500;
-    padding: 1rem 0 0;
+    font-size: 1.2rem;
+    padding: 2rem 0 0;
+    
   }
   p {
-    padding: 0.2rem;
+    
   }
+
+  @media (min-width: 800px) {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+
+    div {
+      display: flex;
+      padding: 3rem;
+     
+    }
+}
+
+
 }

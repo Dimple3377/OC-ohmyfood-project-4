@@ -6,18 +6,16 @@
 }
 
 body {
-  margin: 0;
   font-family: "Roboto", sans-serif;
   background: #f6f6f6;
+  margin: auto;
+  max-width: 1440px;
 }
 
-.main {
-  margin: 0;
-  padding: 0 1rem;
-}
-
-h2 {
-  margin: 2rem;
+@media (min-width: 800px) {
+  .main {
+    padding: 0;
+  }
 }
 
 h3,
@@ -41,6 +39,11 @@ header {
   height: 80px;
   width: 100%;
 }
+@media (min-width: 800px) {
+  header {
+    box-shadow: none;
+  }
+}
 
 * a {
   text-decoration: none;
@@ -56,7 +59,11 @@ header {
 
 .explorer {
   text-align: center;
-  max-width: 24rem;
+}
+@media (min-width: 800px) {
+  .explorer h2 {
+    font-size: 2.5rem;
+  }
 }
 .explorer button {
   color: white;
@@ -80,34 +87,48 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f3f3f3;
+  background: #e8e8e8;
   color: #3F3F3F;
   margin-bottom: 2rem;
+  padding: 0.5rem;
 }
 .location .location-city {
   margin-left: 13px;
   font-weight: 400;
 }
+.location .location-city p {
+  font-weight: bold;
+}
 
 .process {
   counter-reset: steps;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+  background-color: white;
 }
 .process ol {
-  display: grid;
+  display: flex;
   gap: 2rem;
   padding: 0;
 }
-.process li {
+@media (max-width: 800px) {
+  .process ol {
+    flex-direction: column;
+  }
+}
+.process ol li {
   position: relative;
+  font-weight: bold;
   list-style-type: none;
   background-color: #f6f6f6;
-  padding: 1.5rem 2rem;
+  padding: 1.7rem 2rem;
   flex-grow: 0.77;
   border-radius: 1rem;
   box-shadow: 2px 1px 14px -4px #000000;
 }
-.process li::before {
+.process ol li::before {
   content: counter(steps);
   counter-increment: steps;
   color: white;
@@ -122,13 +143,16 @@ header {
   left: -1rem;
   transform: translateY(-50%);
 }
-.process li:hover {
+.process ol li:hover {
   transform: scale(1.02);
 }
-.process li i.fas {
+.process ol li i.fas {
   margin-right: 1rem;
   color: #7e7e7e;
   font-size: 1.5rem;
+}
+.process ol li i.fas.fa-store {
+  color: #9356dc;
 }
 
 .menus {
@@ -139,13 +163,27 @@ header {
 }
 .menus .menus__cards {
   display: grid;
-  grid-template-columns: repeat(1, 1);
-  gap: 2rem;
+  margin-bottom: 2rem;
 }
-.menus .new {
+@media (min-width: 800px) {
+  .menus .menus__cards {
+    gap: 4rem;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .menus .menus__cards a {
+    width: 46%;
+  }
+}
+
+.new {
   position: relative;
 }
-.menus .new::before {
+
+.new::before {
   content: "nouveau";
   position: absolute;
   height: 2rem;
@@ -157,38 +195,44 @@ header {
   right: 1rem;
   top: 1rem;
 }
-.menus .card .card__image {
+
+.card .card__image {
   border-radius: 1rem 1rem 0 0;
   height: 13rem;
   flex-grow: 1;
   min-width: 20rem;
 }
-.menus .card__image-1 {
+.card__image-1 {
   background-image: url("../../assets/menu-1.jpg");
   height: 15rem;
   background-size: cover;
+  background-position: center;
 }
-.menus .card__image-2 {
+.card__image-2 {
   background-image: url("../../assets/menu-2.jpg");
   height: 15rem;
   background-size: cover;
+  background-position: center;
 }
-.menus .card__image-3 {
+.card__image-3 {
   background-image: url("../../assets/menu-3.jpg");
   height: 15rem;
   background-size: cover;
+  background-position: center;
 }
-.menus .card__image-4 {
+.card__image-4 {
   background-image: url("../../assets/menu-4.jpg");
   height: 15rem;
   background-size: cover;
+  background-position: center;
 }
-.menus .card__description {
+.card__description {
   position: relative;
   background-color: white;
   border-radius: 0 0 1rem 1rem;
+  padding: 0.5rem;
 }
-.menus .card__description::before {
+.card__description::before {
   display: inline-block;
   font-style: normal;
   font-variant: normal;
@@ -208,7 +252,7 @@ header {
   opacity: 1;
   transition: all 200ms ease-in-out;
 }
-.menus .card__description::after {
+.card__description::after {
   display: inline-block;
   font-style: normal;
   font-variant: normal;
@@ -229,27 +273,107 @@ header {
   transition: all 200ms ease-in-out;
   background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
 }
-.menus .card__description:hover::after {
+.card__description:hover::after {
   opacity: 1;
   transform: translateY(-50%) scale(1.1);
 }
-.menus .card__description h3,
-.menus .card__description p {
-  padding: 0.5rem;
+.card__description h3,
+.card__description p {
+  padding: 0.3rem;
 }
 
 footer {
   background-color: #353535;
-  padding: 0rem 3rem;
   color: white;
+}
+@media (min-width: 800px) {
+  footer {
+    padding: 0rem 3rem;
+  }
 }
 footer h2 {
   font-family: "Shrikhand", "sans-serif";
   font-weight: 500;
-  padding: 1rem 0 0;
+  font-size: 1.2rem;
+  padding: 2rem 0 0;
 }
-footer p {
-  padding: 0.2rem;
+@media (min-width: 800px) {
+  footer {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+  }
+  footer div {
+    display: flex;
+    padding: 3rem;
+  }
+}
+
+.banner img {
+  display: block;
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.restaurant__main {
+  margin-top: -2rem;
+}
+.restaurant__main h2 {
+  margin: 0;
+  font-family: "Shrikhand", "sans-serif";
+  position: relative;
+  background-color: white;
+  border-radius: 0 0 1rem 1rem;
+  padding: 0.5rem;
+  border-radius: 2rem 2rem 0 0;
+  padding: 2rem;
+}
+.restaurant__main h2::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  content: "\f004";
+  font-size: 1.3rem;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  opacity: 1;
+  transition: all 200ms ease-in-out;
+}
+.restaurant__main h2::after {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f004";
+  font-size: 1.3rem;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+}
+.restaurant__main h2:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
 }
 
 /*# sourceMappingURL=style.css.map */

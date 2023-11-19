@@ -7,18 +7,20 @@
   
 }
 body {
-  margin: 0;
   font-family: 'Roboto', sans-serif;
   background: #f6f6f6;
+  margin: auto;
+  max-width: 1440px;
 }
-.main {
-  margin: 0;
-  padding: 0 1rem;
-
+.main { 
+ 
+  @media (min-width: 800px) {
+ padding: 0;
+}
 
 }
 h2 {
-  margin: 2rem;
+
 }
 
 h3,
