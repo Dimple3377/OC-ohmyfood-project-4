@@ -10,20 +10,8 @@
     }
     }
     & button {
-        color: white;
-        border: none;
-     padding: 1rem 1.8rem;
-     font-weight: 500;
-     font-size: 1rem;
-     border-radius: 2rem;
-     transition: all 180ms;
-     margin-top: 1rem;
-     @include mixins.base-shadow;
-     @include mixins.gradient;
+    @include mixins.base-button;
+ 
      }
-   & button:hover {
-       transform: scale(1.01);
-       opacity: 0.9;
-       cursor: pointer;
-    } 
+  
    }
