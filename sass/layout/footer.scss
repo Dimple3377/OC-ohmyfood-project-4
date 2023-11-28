@@ -1,7 +1,9 @@
 @use "./../utils/colors";
+@use "./../utils/variables";
 
 footer {
   background-color: colors.$darkgrey;
+  padding-left: 2rem;
   @media (min-width: 800px) {
   padding: 0rem 3rem;
   }
@@ -17,7 +19,7 @@ footer {
     
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: variables.$breakpoint) {
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
@@ -25,6 +27,7 @@ footer {
     div {
       display: flex;
       padding: 3rem;
+      gap: 2rem;
      
     }
 }

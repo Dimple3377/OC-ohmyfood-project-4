@@ -12,7 +12,7 @@ body {
   max-width: 1440px;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   .main {
     padding: 0;
   }
@@ -29,6 +29,7 @@ h6 {
 
 p {
   margin: 0;
+  padding: 4px;
 }
 
 a {
@@ -46,7 +47,7 @@ header {
   height: 80px;
   width: 100%;
 }
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   header {
     box-shadow: none;
   }
@@ -69,8 +70,9 @@ header {
 
 .explorer {
   text-align: center;
+  margin-bottom: 1rem;
 }
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   .explorer h2 {
     font-size: 2.5rem;
   }
@@ -78,12 +80,12 @@ header {
 .explorer button {
   color: white;
   border: none;
-  padding: 1rem 1.8rem;
+  padding: 1rem 2rem;
   font-weight: 500;
   font-size: 1rem;
   border-radius: 2rem;
   transition: all 180ms;
-  margin-top: 1rem;
+  margin: 2rem;
   cursor: pointer;
   box-shadow: 2px 1px 14px -4px #7e7e7e;
   background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
@@ -94,6 +96,42 @@ header {
   cursor: pointer;
 }
 
+.loader {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  background-color: #fff;
+  height: 100vh;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.9;
+  animation: disappear 200ms 3s forwards;
+  transform-origin: top;
+}
+.loader::after {
+  content: "";
+  height: 100px;
+  width: 100px;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #9356dc;
+  border-radius: 50%;
+  animation: spin 1s infinite ease-in-out;
+  animation-iteration-count: 3;
+}
+
+@keyframes disappear {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .location {
   display: flex;
   justify-content: center;
@@ -113,18 +151,22 @@ header {
 
 .process {
   counter-reset: steps;
-  margin-bottom: 4rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 1rem;
+  padding: 1rem 2rem 2rem;
   background-color: white;
+}
+@media (min-width: 768px) {
+  .process {
+    padding: 1rem 7rem 2rem;
+  }
 }
 .process ol {
   display: flex;
   gap: 2rem;
   padding: 0;
 }
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .process ol {
     flex-direction: column;
   }
@@ -167,6 +209,7 @@ header {
 }
 
 #homepage .menus {
+  margin: 2rem;
   background-color: #f6f6f6;
 }
 #homepage .menus h2 {
@@ -175,10 +218,11 @@ header {
 #homepage .menus .menus__cards {
   display: grid;
   margin-bottom: 2rem;
+  gap: 2rem;
 }
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   #homepage .menus .menus__cards {
-    gap: 4rem;
+    gap: 4rem 3rem;
     align-items: center;
     align-content: center;
     width: 100%;
@@ -206,30 +250,29 @@ header {
 }
 #homepage .card .card__image {
   border-radius: 1rem 1rem 0 0;
-  height: 13rem;
   flex-grow: 1;
   min-width: 20rem;
 }
 #homepage .card__image-1 {
-  background-image: url("../../assets/menu-1.jpg");
+  background-image: url("./assets/menu-1.jpg");
   height: 15rem;
   background-size: cover;
   background-position: center;
 }
 #homepage .card__image-2 {
-  background-image: url("../../assets/menu-2.jpg");
+  background-image: url("./assets/menu-2.jpg");
   height: 15rem;
   background-size: cover;
   background-position: center;
 }
 #homepage .card__image-3 {
-  background-image: url("../../assets/menu-3.jpg");
+  background-image: url("./assets/menu-3.jpg");
   height: 15rem;
   background-size: cover;
   background-position: center;
 }
 #homepage .card__image-4 {
-  background-image: url("../../assets/menu-4.jpg");
+  background-image: url("./assets/menu-4.jpg");
   height: 15rem;
   background-size: cover;
   background-position: center;
@@ -301,11 +344,13 @@ header {
 }
 #homepage .card__description h3,
 #homepage .card__description p {
-  padding: 0.3rem;
+  padding: 0;
+  margin: 5px;
 }
 
 footer {
   background-color: #353535;
+  padding-left: 2rem;
   color: white;
 }
 @media (min-width: 800px) {
@@ -319,7 +364,7 @@ footer h2 {
   font-size: 1.2rem;
   padding: 2rem 0 0;
 }
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   footer {
     display: flex;
     flex-direction: row-reverse;
@@ -328,6 +373,7 @@ footer h2 {
   footer div {
     display: flex;
     padding: 3rem;
+    gap: 2rem;
   }
 }
 
@@ -353,9 +399,8 @@ body {
 #page-lapalette .banner img {
   display: block;
   width: 100%;
-  height: 70vh;
+  height: 35vh;
   object-fit: cover;
-  object-position: center bottom;
 }
 #page-lapalette .restaurant__title {
   margin-top: -2rem;
@@ -363,6 +408,8 @@ body {
 #page-lapalette .restaurant__title h2 {
   margin: 0;
   font-family: "Shrikhand", "sans-serif";
+  text-align: center;
+  font-weight: inherit;
   position: relative;
   background-color: white;
   border-radius: 0 0 1rem 1rem;
@@ -430,14 +477,21 @@ body {
   opacity: 1;
   transform: translateY(-50%) scale(1.1);
 }
+#page-lapalette .restaurant__title h2::before {
+  right: 23rem;
+}
+#page-lapalette .restaurant__title h2::after {
+  right: 23rem;
+}
 #page-lapalette .restaurant-main {
-  padding: 0 1rem;
+  padding: 0 12rem;
 }
 #page-lapalette .menus {
   display: grid;
+  padding: 0 10rem;
   gap: 1rem;
 }
-@media (max-width: 800px) {
+@media (min-width: 768px) {
   #page-lapalette .menus {
     grid-template-columns: 1fr;
   }
@@ -460,33 +514,44 @@ body {
 #page-lapalette .menus .menus__category {
   overflow: hidden;
 }
-#page-lapalette .menus .menus__category .menus-items {
+#page-lapalette .menus .menus-items {
   display: flex;
   margin-block: 1rem;
   background-color: white;
   border-radius: 1rem;
   filter: drop-shadow(2px 2px 2px #F6F6F6);
+  animation: appear 1s;
+  animation-fill-mode: both;
 }
-#page-lapalette .menus .menus__category .menus-items .menus-items__description {
+#page-lapalette .menus .menus-items:nth-child(1) {
+  animation-delay: 100ms;
+}
+#page-lapalette .menus .menus-items:nth-child(2) {
+  animation-delay: 200ms;
+}
+#page-lapalette .menus .menus-items:nth-child(3) {
+  animation-delay: 300ms;
+}
+#page-lapalette .menus .menus-items .menus-items__description {
   padding: 1rem;
   overflow: hidden;
 }
-#page-lapalette .menus .menus__category .menus-items .menus-items__description h4,
-#page-lapalette .menus .menus__category .menus-items .menus-items__description p {
+#page-lapalette .menus .menus-items .menus-items__description h4,
+#page-lapalette .menus .menus-items .menus-items__description p {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin-block: auto;
   padding: 0;
 }
-#page-lapalette .menus .menus__category .menus-items .menus-items__price {
+#page-lapalette .menus .menus-items .menus-items__price {
   margin-left: auto;
   font-weight: 900;
   padding: 1rem;
   display: flex;
   align-items: flex-end;
 }
-#page-lapalette .menus .menus__category .menus-items .menus-items__check {
+#page-lapalette .menus .menus-items .menus-items__check {
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -496,7 +561,7 @@ body {
   width: 4rem;
   transition: margin-right 0.5s;
 }
-#page-lapalette .menus .menus__category .menus-items .menus-items__check i {
+#page-lapalette .menus .menus-items .menus-items__check i {
   display: grid;
   place-items: center;
   background-color: white;
@@ -505,13 +570,13 @@ body {
   border-radius: 1rem;
   color: #99E2D0;
 }
-#page-lapalette .menus .menus__category .menus-items:hover {
+#page-lapalette .menus .menus-items:hover {
   cursor: pointer;
 }
-#page-lapalette .menus .menus__category .menus-items:hover .menus-items__check {
+#page-lapalette .menus .menus-items:hover .menus-items__check {
   margin-right: 0;
 }
-#page-lapalette .menus .menus__category .menus-items:hover i {
+#page-lapalette .menus .menus-items:hover i {
   animation: quarterspin 0.5s ease-in-out;
 }
 @keyframes quarterspin {
@@ -522,25 +587,36 @@ body {
     transform: rotate(0);
   }
 }
-#page-lapalette section.order {
+@keyframes appear {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+section.order {
   height: 10vh;
   display: grid;
   place-items: center;
 }
-#page-lapalette section.order button {
+section.order button {
   color: white;
   border: none;
-  padding: 1rem 1.8rem;
+  padding: 1rem 2rem;
   font-weight: 500;
   font-size: 1rem;
   border-radius: 2rem;
   transition: all 180ms;
-  margin-top: 1rem;
+  margin: 2rem;
   cursor: pointer;
   box-shadow: 2px 1px 14px -4px #7e7e7e;
   background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
 }
-#page-lapalette section.order button:hover {
+section.order button:hover {
   transform: scale(1.01);
   opacity: 0.9;
   cursor: pointer;

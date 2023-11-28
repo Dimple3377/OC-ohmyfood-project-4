@@ -4,6 +4,7 @@
 
 #homepage {
 .menus {
+  margin: 2rem;
   background-color: #f6f6f6;
   
    
@@ -15,10 +16,11 @@ h2 {
   .menus__cards {
     display: grid;
     margin-bottom: 2rem;
+    gap: 2rem;
 
-    @media (min-width: 800px) {
+    @media (min-width: variables.$breakpoint) {
 
-      gap: 4rem;
+      gap: 4rem 3rem;
 align-items: center;
     align-content: center;
     width: 100%;
@@ -50,13 +52,12 @@ align-items: center;
   .card {
     & .card__image {
       border-radius: 1rem 1rem 0 0;
-      height: 13rem;
       flex-grow: 1;
       min-width: 20rem;
     }
     @for $i from 1 through 4 {
       &__image-#{$i} {
-        background-image: url("../../assets/menu-#{$i}.jpg");
+        background-image: url("./assets/menu-#{$i}.jpg");
         height: 15rem;
         background-size: cover;
         background-position: center;
@@ -68,7 +69,9 @@ align-items: center;
 
       h3,
       p {
-        padding: 0.3rem;
+        padding: 0;
+        margin: 5px;
+        
       }
     }
   }

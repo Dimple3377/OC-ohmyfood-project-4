@@ -4,17 +4,18 @@
 
 .process {
   counter-reset: steps;
-  margin-bottom: 4rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 1rem;
+  padding: 1rem 2rem 2rem;
+  @media (min-width: variables.$breakpoint){
+  padding: 1rem 7rem 2rem;}
   background-color: white;
 
   & ol {
     display: flex;
     gap: 2rem;
     padding: 0;
-    @media (max-width: 800px) {
+    @media (max-width: variables.$breakpoint) {
       flex-direction: column;
   }
 
