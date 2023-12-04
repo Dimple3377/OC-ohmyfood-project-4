@@ -3,37 +3,43 @@
 @use "../utils/mixins";
 
 #homepage {
-.menus {
-  margin: 2rem;
-  background-color: #f6f6f6;
-  
-   
-h2 {
-    margin-bottom: 2rem;
-    
-  }
-
-  .menus__cards {
-    display: grid;
-    margin-bottom: 2rem;
-    gap: 2rem;
-
-    @media (min-width: variables.$breakpoint) {
-
-      gap: 4rem 3rem;
-align-items: center;
-    align-content: center;
-    width: 100%;
+  .menus {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    margin: auto;
+    background-color: #f6f6f6;
+    margin-bottom: 2rem;
+    @media (min-width: variables.$breakpoint) {
+      flex-wrap: wrap;
+    }
 
-    a {
-      width: 46%;
+    h2 {
+      margin: 2rem;
+      @media (min-width: variables.$breakpoint) {
+        margin: 2rem 10rem;
+      }
+    }
+
+    .menus__cards {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+      gap: 2rem;
+      padding: 0.5rem;
+
+      @media (min-width: variables.$breakpoint) {
+        gap: 4rem 7rem;
+        width: 100%;
+        flex-flow: wrap;
+        margin: auto;
+        justify-content: center;
+
+        a {
+          width: 40%;
+        }
+      }
     }
   }
-    
-  }
-}
   .new {
     position: relative;
   }
@@ -54,6 +60,8 @@ align-items: center;
       border-radius: 1rem 1rem 0 0;
       flex-grow: 1;
       min-width: 20rem;
+      @media (min-width: variables.$breakpoint) {
+      height: 20rem;}
     }
     @for $i from 1 through 4 {
       &__image-#{$i} {
@@ -65,13 +73,11 @@ align-items: center;
     }
     &__description {
       @include mixins.heart-animated;
-    
 
       h3,
       p {
         padding: 0;
         margin: 5px;
-        
       }
     }
   }

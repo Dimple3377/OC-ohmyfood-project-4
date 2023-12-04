@@ -1,28 +1,25 @@
 @use "../utils/variables";
 header {
-  font-family: 'Shrikhand', serif;
+  font-family: "Shrikhand", serif;
   box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.2);
   position: relative;
   display: flex;
- 
+
   justify-content: center;
-   
+
   align-items: center;
-    height: 80px;
-    width: 100%;
-    
-     @media (min-width: 768px) {
-      
-      box-shadow: none;
-     }
- 
+  height: 80px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    box-shadow: none;
+  }
 }
 * a {
   text-decoration: none;
-  color: none;
 }
 .header-logo {
-  font-family: 'Shrikhand', cursive;
+  font-family: "Shrikhand", cursive;
   margin: 0;
   color: black;
   align-items: center;

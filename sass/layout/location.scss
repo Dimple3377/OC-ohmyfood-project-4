@@ -1,20 +1,19 @@
 .location {
-    display: flex;
-     
-    justify-content: center;
-      
-    align-items: center;
-      background: #e8e8e8;;
-      color: #3F3F3F;
-      margin-bottom: 2rem;
-      padding: 0.5rem;
-      
-    .location-city {
-       margin-left: 13px;
-       font-weight: 400;
-      }
-      .location-city p {
-        font-weight: bold;
-      }
-   }
-   
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+  background: #e8e8e8;
+  color: #3f3f3f;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+
+  .location-city {
+    margin-left: 13px;
+    font-weight: 400;
+  }
+  .location-city p {
+    font-weight: bold;
+  }
+}

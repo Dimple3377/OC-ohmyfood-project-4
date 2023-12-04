@@ -1,22 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
 
 *,
 ::before,
 ::after {
   box-sizing: border-box;
-  
 }
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background: #f6f6f6;
   margin: auto;
-  max-width: 1440px;
 }
-.main { 
- 
-  @media (min-width: 768px) {
- padding: 0;
-}
+.main {
+  
 }
 
 h1,
@@ -24,15 +19,13 @@ h2,
 h3,
 h4,
 h5,
-h6 { 
+h6 {
   padding: 0.5rem;
 }
 
- 
-p {   
+p {
   margin: 0;
   padding: 4px;
-
 }
 
 a {
