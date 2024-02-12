@@ -1,0 +1,172 @@
+@use "../utils/mixins";
+@use "../utils/variables";
+@use "../utils/colors";
+@use "../utils/animations";
+
+body {
+  background-color: colors.$brightgrey;
+}
+
+#page-lapalette {
+  .fa-arrow-left::before {
+    position: absolute;
+    font-size: 20px;
+    padding: 1.5rem;
+  }
+  header::before {
+    @include mixins.font-awesome($font-weight: 900);
+    content: "\f060";
+  }
+
+  .banner img {
+    display: block;
+    width: 100%;
+    height: 35vh;
+    object-fit: cover;
+  }
+
+  .restaurant__title {
+    position: relative;
+    margin-top: -2rem;
+    display: flex; // Active Flexbox
+    align-items: center; // Centre les éléments verticalement
+    justify-content: center; // Centre les éléments horizont
+    @include mixins.heart-animation;
+    cursor: pointer;
+    right: 35%;
+    h2 {
+      margin: 0;
+      font-family: "Shrikhand", "sans-serif";
+      text-align: center;
+      font-weight: inherit;
+
+      /*@include mixins.heart-animation;
+      background-color: #{colors.$brightgrey};
+      border-radius: 2rem 2rem 0 0;
+      padding: 2rem 1rem;
+
+      &::before,
+      &::after {
+        right: 1rem;
+        @media (min-width: #{variables.$breakpoint}) {
+          right: 20rem;
+        }
+      }*/
+    }
+  }
+  .restaurant-main {
+    padding: 0;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .menus {
+    display: grid;
+    gap: 1rem;
+    @media (min-width: variables.$breakpoint) {
+      grid-template-columns: 1fr;
+    }
+
+    h3 {
+      text-transform: uppercase;
+      font-weight: 100;
+      position: relative;
+      margin-block: 0;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 2rem;
+        left: 0.5rem;
+        height: 0.25rem;
+        width: 3rem;
+        background-color: colors.$tertiary;
+      }
+    }
+
+    .menus__category {
+      overflow: hidden;
+      @media (min-width: #{variables.$breakpoint}) {
+        margin: auto;
+        min-width: 40rem;
+      }
+    }
+
+    .menus-items {
+      display: flex;
+      margin-block: 1rem;
+      background-color: white;
+      border-radius: 1rem;
+      filter: drop-shadow(2px 2px 2px #{colors.$brightgrey});
+      animation: appear 1s;
+      animation-fill-mode: both;
+
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+          animation-delay: 0.5s * $i; // Modification délai d'apparition
+        }
+      }
+
+      .menus-items__description {
+        padding: 1rem;
+        overflow: hidden;
+
+        h4,
+        p {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          margin-block: auto;
+          padding: 0;
+        }
+      }
+      .menus-items__price {
+        margin-left: auto;
+        font-weight: 900;
+        padding: 1rem;
+        display: flex;
+        align-items: flex-end;
+      }
+      .menus-items__check {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        $button-width: 4rem;
+        border-radius: 0 1rem 1rem 0;
+        background-color: #{colors.$tertiary};
+        margin-right: -$button-width;
+        width: $button-width;
+        transition: margin-right 0.5s;
+
+        i {
+          display: grid;
+          place-items: center;
+          background-color: white;
+          aspect-ratio: 1/1;
+          width: 2rem;
+          border-radius: 1rem;
+          color: #{colors.$tertiary};
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+        .menus-items__check {
+          margin-right: 0;
+        }
+        i {
+          @include animations.quarterspin;
+        }
+      }
+    }
+  }
+}
+
+section.order {
+  height: 10vh;
+  display: grid;
+  place-items: center;
+  button {
+    @include mixins.base-button;
+  }
+}

@@ -1,0 +1,60 @@
+@use "./colors";
+
+@mixin gradient {
+  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+}
+
+@mixin box-shadow {
+  box-shadow: 2px 1px 14px -4px #{colors.$light-grey}; // Utilisation correcte de la syntaxe Sass pour les variables
+}
+
+@mixin change-zoom {
+  transform: scale(1.02);
+}
+
+@mixin font-awesome($font-weight: 400) {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: $font-weight;
+}
+
+@mixin heart($opacity: 1, $font-weight: 400, $color: inherit, $size: 1rem) {
+  @include font-awesome($font-weight);
+  font-size: 1.3rem;
+  color: $color;
+  opacity: $opacity;
+}
+
+@mixin heart-icon-animation {
+  color: black; // Couleur du cœur (contour)
+  opacity: 0.2; // Cœur "vide" visuellement par transparence
+  transition: opacity 0.5s ease, color 0.5s ease; // Transition douce pour l'opacité et la couleur
+
+  // Au survol, le cœur se "remplit"
+  &:hover {
+    color: #{colors.$primary}; // Remplit l'icône avec la couleur principale
+    background-color: #{colors.$primary}; // Assure que le fond est également rempli
+  }
+}
+.heart-icon {
+  @include heart-icon-animation;
+}
+@mixin base-button {
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  @include box-shadow;
+  @include gradient;
+  &:hover {
+    @include change-zoom;
+    opacity: 0.9;
+  }
+}

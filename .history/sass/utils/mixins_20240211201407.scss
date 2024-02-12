@@ -1,0 +1,107 @@
+@use "./colors";
+
+@mixin gradient {
+  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+}
+
+@mixin box-shadow {
+  &:hover {
+    animation: enhance-shadow 0.5s forwards;
+  }
+}
+@keyframes enhance-shadow {
+  from {
+    box-shadow: 2px 1px 14px -4px colors.$light-grey;
+  }
+  to {
+    // Intensifie l'ombre pour l'effet animé
+    box-shadow: 2px 1px 24px -4px colors.$light-grey;
+  }
+}
+
+@mixin change-zoom {
+  transform: scale(1.02);
+}
+@mixin font-awesome($font-weight: 400) {
+  font-family: "Font Awesome 5 Free";
+  font-weight: $font-weight;
+}
+
+@use "sass:map";
+@use "./colors"; // Assurez-vous que ce chemin est correct
+
+// Mixin pour l'animation du cœur
+@mixin heart-animation {
+  position: relative;
+  width: 1.3rem; // Taille de l'icône de cœur
+  height: 1.3rem; // Hauteur cohérente pour l'animation
+
+  &::before,
+  &::after {
+    content: "\f004"; // Code Unicode pour l'icône de cœur de FontAwesome
+    font-family: "Font Awesome 5 Free"; // Assurez-vous d'inclure FontAwesome
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &::before {
+    @include font-awesome(400);
+    color: map.get(
+      colors.$colors,
+      "light-grey"
+    ); // Utilisez votre variable de couleur
+  }
+
+  &::after {
+    @include font-awesome(900);
+    color: transparent;
+    -webkit-text-stroke: 1px map.get(colors.$colors, "dark-grey"); // Contour du cœur
+    opacity: 0;
+  }
+
+  &:hover::after {
+    animation: fillHeart 0.5s forwards; // Animation pour remplir le cœur
+  }
+}
+
+@keyframes fillHeart {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Application du mixin au cœur
+.heart-icon-filled,
+.heart-icon-empty {
+  @include heart-animation;
+}
+
+// Assurez-vous d'ajouter les autres mixins nécessaires ici...
+
+@mixin base-button {
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  @include box-shadow;
+  @include gradient;
+  &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+}

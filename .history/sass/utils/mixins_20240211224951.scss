@@ -1,0 +1,91 @@
+@use "./colors";
+
+@mixin gradient {
+  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+}
+
+@mixin box-shadow {
+  &:hover {
+    animation: enhance-shadow 0.5s forwards;
+  }
+}
+@keyframes enhance-shadow {
+  from {
+    box-shadow: 2px 1px 14px -4px colors.$light-grey;
+  }
+  to {
+    // Intensifie l'ombre pour l'effet animé
+    box-shadow: 2px 1px 24px -4px colors.$light-grey;
+  }
+}
+
+@mixin heart-animation {
+  .card__description {
+    position: relative;
+    padding-right: 2rem;
+    // Ici, vous pouvez ajouter d'autres styles pour .card__description si nécessaire
+  }
+  .heart__icon {
+    position: absolute;
+    top: 50%;
+    right: 7%;
+    transform: translateY(-50%);
+
+    i.far {
+      transition: opacity 0.3s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    i.fas {
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      position: absolute;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(#ff79da, #9356dc);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    &:hover {
+      i.far {
+        opacity: 0;
+      }
+
+      i.fas {
+        opacity: 1;
+        z-index: 2;
+      }
+    }
+  }
+}
+
+.card {
+  @include heart-animation;
+}
+
+@mixin change-zoom {
+  transform: scale(1.02);
+}
+@mixin font-awesome($font-weight: 400) {
+  font-family: "Font Awesome 5 Free";
+  font-weight: $font-weight;
+}
+
+@mixin base-button {
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  @include box-shadow;
+  @include gradient;
+  &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+}

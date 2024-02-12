@@ -1,0 +1,74 @@
+@use "./colors";
+
+@mixin gradient {
+  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+}
+@mixin box-shadow {
+  box-shadow: 2px 1px 14px -4px colors.$light-grey;
+}
+@mixin change-zoom {
+  transform: scale(1.02);
+}
+
+@mixin font-awesome($font-weight: 400) {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: $font-weight;
+}
+@mixin heart($opacity: 1, $font-weight: 400, $color: inherit, $size: 1rem) {
+  @include font-awesome($font-weight);
+  content: "\f004";
+  font-size: $size;
+  color: $color;
+  opacity: $opacity;
+  transition: opacity 200ms ease-in-out;
+}
+
+@mixin heart-animated {
+  position: relative;
+  &:before {
+    @include heart(1, 400, colors.$primary, 1.3rem);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  &:after {
+    @include heart(0, 900, transparent, 1.3rem);
+    @include gradient;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+@mixin base-button {
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 2rem;
+  transition: all 180ms;
+  margin: 2rem;
+  cursor: pointer;
+  @include box-shadow;
+  @include gradient;
+  &:hover {
+    transform: scale(1.01);
+    opacity: 0.9;
+    cursor: pointer;
+  }
+}

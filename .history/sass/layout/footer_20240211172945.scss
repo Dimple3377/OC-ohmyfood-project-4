@@ -1,0 +1,35 @@
+@use "./../utils/colors";
+@use "./../utils/variables";
+
+footer {
+  background-color: colors.$darkgrey;
+  padding-left: 2rem;
+  color: white;
+
+  h2 {
+    font-family: "Shrikhand", "sans-serif";
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin: 0;
+    @media (min-width: variables.$breakpoint) {
+      margin: 2rem 2rem;
+    }
+  }
+
+  @media (min-width: variables.$breakpoint) {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+
+    div {
+      position: absolute;
+      display: flex;
+      padding: 4rem;
+      margin-right: 10rem;
+      gap: 2rem;
+    }
+  }
+}

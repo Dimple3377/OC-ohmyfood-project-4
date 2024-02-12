@@ -1,0 +1,64 @@
+@use "./colors";
+
+// Mixin pour les icônes FontAwesome
+@mixin font-awesome($font-weight: 400) {
+  font: {
+    style: normal;
+    variant: normal;
+    weight: $font-weight;
+    family: "Font Awesome 5 Free";
+  }
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Mixin pour le cœur, avec animation
+@mixin heart {
+  position: relative;
+  &:before,
+  &:after {
+    content: "\f004";
+    @include font-awesome(900);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease;
+  }
+  &:before {
+    color: red; // Couleur du cœur plein
+    opacity: 0;
+  }
+  &:after {
+    color: transparent; // Cœur vide transparent pour l'animation
+    -webkit-text-stroke: 1px red; // Bordure du cœur
+  }
+}
+
+// Animation de remplissage
+@keyframes fillHeart {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Application des styles et animations aux éléments
+.heart-icon {
+  @include heart;
+  &:hover:before {
+    animation: fillHeart 0.5s forwards; // Remplit le cœur au survol
+  }
+  &:not(:hover):before {
+    animation: fillHeart 0.5s reverse forwards; // Vide le cœur quand la souris s'éloigne
+  }
+}
+
+// Mixin pour le style de base des boutons
+@mixin base-button {
+  // Styles de base pour vos boutons, incluant les mixins pour gradient et ombre
+}

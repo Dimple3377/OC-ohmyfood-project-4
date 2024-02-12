@@ -6,16 +6,26 @@
 }
 
 body {
-  margin: 0px;
   font-family: "Roboto", sans-serif;
   background: #f6f6f6;
+  margin: auto;
 }
 
-.main {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0.5rem;
+}
+
+p {
   margin: 0;
-  padding: 7rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  padding: 4px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }/*# sourceMappingURL=base.css.map */

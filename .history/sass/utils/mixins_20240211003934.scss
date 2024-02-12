@@ -1,0 +1,111 @@
+@use "./colors";
+
+@mixin gradient {
+  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+}
+
+@mixin box-shadow {
+  box-shadow: 2px 1px 14px -4px colors.$light-grey;
+}
+
+@mixin change-zoom {
+  transform: scale(1.02);
+}
+
+@mixin font-awesome($font-weight: 400) {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: $font-weight;
+}
+
+@mixin heart($opacity: 1, $font-weight: 400, $color: inherit, $size: 1rem) {
+  @include font-awesome($font-weight);
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: $font-weight;
+  content: "\f004";
+  font-size: 1.3rem;
+  position: absolute;
+  right: $size;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $color;
+  background-clip: text;
+  -webkit-background-clip: text;
+  opacity: $opacity;
+}
+
+@mixin heart-animated {
+  position: relative;
+  color: transparent; // Commence avec un cœur "vide"
+  font-size: 1.3rem; // Taille de l'icône
+  @include gradient; // Applique le gradient pour le remplissage
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; // Transition douce pour l'apparition et la transformation
+  opacity: 0; // Commence invisible pour l'animation
+}
+.heart-icon {
+  @include font-awesome(400); // Applique les styles de base FontAwesome
+  @include heart-animated; // Applique le mixin modifié
+}
+
+.card:hover .heart-icon {
+  opacity: 1; // Rendez le cœur plein visible au survol de la carte
+  transform: translateY(-50%) scale(1.1); // Agrandit légèrement le cœur au survol
+}
+  &::before {
+    @include heart(1, 400, black, 1rem);
+  }
+
+  &::after {
+    @include heart(0, 900, transparent, 1rem);
+    @include gradient;
+  }
+
+  &:hover::after {
+    animation: fillHeartHover 2s forwards;
+  }
+}
+@keyframes fillHeartHover {
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+  }
+}
+
+@keyframes fillHeartEaseInOut {
+  from {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+@mixin base-button {
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  @include box-shadow;
+  @include gradient;
+  &:hover {
+    @include change-zoom;
+    opacity: 0.9;
+    cursor: pointer;
+  }
+}

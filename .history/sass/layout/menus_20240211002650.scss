@@ -1,0 +1,85 @@
+@use "../utils/variables";
+@use "../utils/colors";
+@use "../utils/mixins";
+
+#homepage {
+  .menus {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: #f6f6f6;
+    margin-bottom: 2rem;
+    @media (min-width: variables.$breakpoint) {
+      flex-wrap: wrap;
+    }
+
+    h2 {
+      margin: 2rem;
+      @media (min-width: variables.$breakpoint) {
+        margin: 2rem 10rem;
+      }
+    }
+
+    .menus__cards {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+      gap: 2rem;
+      padding: 0.5rem;
+
+      @media (min-width: variables.$breakpoint) {
+        gap: 4rem 7rem;
+        width: 100%;
+        flex-flow: wrap;
+        margin: auto;
+        justify-content: center;
+
+        a {
+          width: 40%;
+        }
+      }
+    }
+  }
+  .new {
+    position: relative;
+  }
+  .new::before {
+    content: "nouveau";
+    position: absolute;
+    height: 2rem;
+    width: 5rem;
+    background-color: colors.$tertiary;
+    color: darken(colors.$tertiary, 50%);
+    display: grid;
+    place-items: center;
+    right: 1rem;
+    top: 1rem;
+  }
+  .card {
+    & .card__image {
+      border-radius: 1rem 1rem 0 0;
+      flex-grow: 1;
+      min-width: 20rem;
+      @media (min-width: variables.$breakpoint) {
+        height: 20rem;
+      }
+    }
+    @for $i from 1 through 4 {
+      &__image-#{$i} {
+        background-image: url("./assets/menu-#{$i}.jpg");
+        height: 15rem;
+        background-size: cover;
+        background-position: center;
+      }
+    }
+    &__description {
+      // @include mixins.heart-animated;
+
+      h3,
+      p {
+        padding: 0;
+        margin: 5px;
+      }
+    }
+  }
+}

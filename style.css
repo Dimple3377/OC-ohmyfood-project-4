@@ -60,6 +60,81 @@ header {
 }
 
 
+@keyframes fillHeart {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes emptyHeart {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes enhance-shadow {
+  from {
+    box-shadow: 2px 1px 14px -4px #7e7e7e;
+  }
+  to {
+    box-shadow: 2px 1px 24px -4px #7e7e7e;
+  }
+}
+@keyframes fillHeart {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes emptyHeart {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.card__description {
+  position: relative;
+  padding: 2%;
+  background-color: white;
+  border-radius: 1rem;
+}
+
+.card .heart__icon {
+  position: absolute;
+  top: 35%;
+  right: 10%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+}
+.card .heart__icon i.far {
+  transition: opacity 1s ease-in-out;
+  position: absolute;
+}
+.card .heart__icon i.fas {
+  opacity: 0;
+  position: absolute;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(#ff79da, #9356dc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: emptyHeart 1s ease-in-out forwards;
+}
+.card .heart__icon:hover i.fas {
+  animation: fillHeart 1s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
+
 .explorer {
   text-align: center;
   margin-bottom: 1rem;
@@ -67,6 +142,7 @@ header {
 @media (min-width: 768px) {
   .explorer h2 {
     font-size: 2.5rem;
+    margin-bottom: 1rem;
   }
 }
 .explorer button {
@@ -76,14 +152,15 @@ header {
   font-weight: 500;
   font-size: 1rem;
   border-radius: 2rem;
-  transition: all 180ms;
-  margin: 2rem;
   cursor: pointer;
-  box-shadow: 2px 1px 14px -4px #7e7e7e;
   background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 .explorer button:hover {
-  transform: scale(1.01);
+  animation: enhance-shadow 0.5s forwards;
+}
+.explorer button:hover {
   opacity: 0.9;
   cursor: pointer;
 }
@@ -171,10 +248,19 @@ header {
   font-weight: bold;
   list-style-type: none;
   background-color: #f6f6f6;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 1.7rem 2rem;
   flex-grow: 0.77;
   border-radius: 1rem;
-  box-shadow: 2px 1px 14px -4px #7e7e7e;
+}
+.process ol li:hover {
+  animation: enhance-shadow 0.5s forwards;
+}
+.process ol li:hover {
+  transform: scale(1.02);
+}
+.process ol li:hover i.fas {
+  color: #9356dc;
 }
 .process ol li::before {
   content: counter(steps);
@@ -191,16 +277,10 @@ header {
   left: -1rem;
   transform: translateY(-50%);
 }
-.process ol li:hover {
-  transform: scale(1.02);
-}
 .process ol li i.fas {
   margin-right: 1rem;
   color: #7e7e7e;
   font-size: 1.5rem;
-}
-.process ol li i.fas.fa-store {
-  color: #9356dc;
 }
 
 #homepage .menus {
@@ -216,7 +296,7 @@ header {
   }
 }
 #homepage .menus h2 {
-  margin: 2rem;
+  margin: 1rem;
 }
 @media (min-width: 1024px) {
   #homepage .menus h2 {
@@ -235,7 +315,6 @@ header {
     gap: 4rem 7rem;
     width: 100%;
     flex-flow: wrap;
-    margin: auto;
     justify-content: center;
   }
   #homepage .menus .menus__cards a {
@@ -291,71 +370,6 @@ header {
   background-size: cover;
   background-position: center;
 }
-#homepage .card__description {
-  position: relative;
-  background-color: white;
-  border-radius: 0 0 1rem 1rem;
-  padding: 0.5rem;
-}
-#homepage .card__description::before {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 400;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 400;
-  content: "\f004";
-  font-size: 1.3rem;
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: inherit;
-  background-clip: text;
-  -webkit-background-clip: text;
-  opacity: 1;
-  transition: all 200ms ease-in-out;
-}
-#homepage .card__description::after {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f004";
-  font-size: 1.3rem;
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  opacity: 0;
-  transition: all 200ms ease-in-out;
-  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
-}
-#homepage .card__description:hover::after {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.1);
-}
 #homepage .card__description h3,
 #homepage .card__description p {
   padding: 0;
@@ -364,31 +378,38 @@ header {
 
 footer {
   background-color: #353535;
-  padding-left: 2rem;
+  padding: 1rem 1rem;
   color: white;
 }
 footer h2 {
   font-family: "Shrikhand", "sans-serif";
+  position: relative;
+  padding: 0;
   font-weight: 500;
   font-size: 1.2rem;
-  padding: 2rem;
+  padding: 0.5rem;
   margin: 0;
 }
 @media (min-width: 1024px) {
   footer h2 {
-    margin: 1rem 2rem;
+    padding: 3rem;
+    margin-bottom: -2rem;
   }
 }
 @media (min-width: 1024px) {
   footer {
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
   }
   footer div {
+    position: absolute;
     display: flex;
-    padding: 3rem;
+    margin-right: 11rem;
     gap: 2rem;
+    padding: 3rem;
   }
 }
 
@@ -402,11 +423,6 @@ body {
   padding: 1.5rem;
 }
 #page-lapalette header::before {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   content: "\f060";
@@ -418,94 +434,57 @@ body {
   object-fit: cover;
 }
 #page-lapalette .restaurant__title {
+  position: relative;
   margin-top: -2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #f6f6f6;
+  border-radius: 2rem 2rem 0 0;
+  padding: 2rem 1rem;
 }
 #page-lapalette .restaurant__title h2 {
   margin: 0;
   font-family: "Shrikhand", "sans-serif";
   text-align: center;
   font-weight: inherit;
-  position: relative;
-  background-color: white;
-  border-radius: 0 0 1rem 1rem;
-  padding: 0.5rem;
-  background-color: #f6f6f6;
-  border-radius: 2rem 2rem 0 0;
-  padding: 2rem 1rem;
 }
-#page-lapalette .restaurant__title h2::before {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 400;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 400;
-  content: "\f004";
-  font-size: 1.3rem;
+#page-lapalette .restaurant__title .heart__icon {
   position: absolute;
-  right: 1rem;
-  top: 50%;
+  top: 35%;
+  right: 10%;
   transform: translateY(-50%);
-  color: inherit;
-  background-clip: text;
-  -webkit-background-clip: text;
-  opacity: 1;
-  transition: all 200ms ease-in-out;
+  font-size: 1.5rem;
 }
-#page-lapalette .restaurant__title h2::after {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f004";
-  font-size: 1.3rem;
+#page-lapalette .restaurant__title .heart__icon i.far {
+  transition: opacity 1s ease-in-out;
   position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
+}
+#page-lapalette .restaurant__title .heart__icon i.fas {
   opacity: 0;
-  transition: all 200ms ease-in-out;
-  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+  position: absolute;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(#ff79da, #9356dc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: emptyHeart 1s ease-in-out forwards;
 }
-#page-lapalette .restaurant__title h2:hover::after {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.1);
+#page-lapalette .restaurant__title .heart__icon:hover i.fas {
+  animation: fillHeart 1s ease-in-out forwards;
+  animation-delay: 0.5s;
 }
-#page-lapalette .restaurant__title h2::before {
-  right: 1rem;
+#page-lapalette .restaurant__title .heart__icon {
+  right: 35%;
+  top: 40%;
 }
-@media (min-width: 1024px) {
-  #page-lapalette .restaurant__title h2::before {
-    right: 20rem;
+@media (max-width: 1024px) {
+  #page-lapalette .restaurant__title .heart__icon {
+    position: absolute;
+    right: calc(50% - 4em);
   }
-}
-#page-lapalette .restaurant__title h2::after {
-  right: 1rem;
-}
-@media (min-width: 1024px) {
-  #page-lapalette .restaurant__title h2::after {
-    right: 20rem;
+  #page-lapalette .restaurant__title h2 {
+    margin-right: 5rem;
   }
 }
 #page-lapalette .restaurant-main {
@@ -556,13 +535,13 @@ body {
   animation-fill-mode: both;
 }
 #page-lapalette .menus .menus-items:nth-child(1) {
-  animation-delay: 100ms;
+  animation-delay: 0.5s;
 }
 #page-lapalette .menus .menus-items:nth-child(2) {
-  animation-delay: 200ms;
+  animation-delay: 1s;
 }
 #page-lapalette .menus .menus-items:nth-child(3) {
-  animation-delay: 300ms;
+  animation-delay: 1.5s;
 }
 #page-lapalette .menus .menus-items .menus-items__description {
   padding: 1rem;
@@ -608,9 +587,6 @@ body {
 #page-lapalette .menus .menus-items:hover .menus-items__check {
   margin-right: 0;
 }
-#page-lapalette .menus .menus-items:hover i {
-  animation: quarterspin 0.5s ease-in-out;
-}
 @keyframes quarterspin {
   0% {
     transform: rotate(-270deg);
@@ -642,14 +618,13 @@ section.order button {
   font-weight: 500;
   font-size: 1rem;
   border-radius: 2rem;
-  transition: all 180ms;
-  margin: 2rem;
   cursor: pointer;
-  box-shadow: 2px 1px 14px -4px #7e7e7e;
   background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
 }
 section.order button:hover {
-  transform: scale(1.01);
+  animation: enhance-shadow 0.5s forwards;
+}
+section.order button:hover {
   opacity: 0.9;
   cursor: pointer;
 }

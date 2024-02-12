@@ -1,0 +1,25 @@
+@use "./../utils/colors";
+@use "./../utils/variables";
+
+footer {
+  display: flex;
+  justify-content: center; // Centre les éléments horizontalement
+  align-items: center; // Centre les éléments verticalement
+  background-color: #{colors.$darkgrey};
+  padding: 2rem;
+  color: white;
+
+  .footer-content {
+    display: flex;
+    flex-direction: column; // Aligner les enfants verticalement
+    align-items: center; // Centre les enfants de .footer-content
+    gap: 1rem; // Espacement entre les éléments à l'intérieur de .footer-content
+
+    h2 {
+      margin: 0; // Supprime la marge par défaut du h2 si nécessaire
+      font-family: "Shrikhand", "sans-serif";
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+  }
+}

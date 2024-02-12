@@ -1,0 +1,81 @@
+@use "./colors";
+
+@mixin gradient {
+  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+}
+
+@mixin box-shadow {
+  &:hover {
+    animation: enhance-shadow 0.5s forwards;
+  }
+}
+@keyframes enhance-shadow {
+  from {
+    box-shadow: 2px 1px 14px -4px colors.$light-grey;
+  }
+  to {
+    // Intensifie l'ombre pour l'effet animé
+    box-shadow: 2px 1px 24px -4px colors.$light-grey;
+  }
+}
+
+@mixin change-zoom {
+  transform: scale(1.02);
+}
+
+@mixin font-awesome($font-weight: 400) {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: $font-weight;
+}
+
+@mixin heart($opacity: 1, $font-weight: 400, $color: inherit, $size: 1rem) {
+  @include font-awesome($font-weight);
+  color: $color;
+  font-size: $size;
+  opacity: $opacity;
+}
+
+@mixin heart-animated {
+  position: relative;
+  background-color: white;
+  border-radius: 0 0 1rem 1rem;
+  padding: 0.5rem;
+
+  &::before {
+    @include heart(1, 900, black, 1rem); // Cœur vide initial en noir
+    content: "\f004"; // Code FontAwesome pour le cœur
+  }
+
+  &:hover::before {
+    // Pas besoin de répéter tout grâce à l'héritage de `heart`, juste changer la couleur et peut-être l'animation
+    color: #{colors.$fill-color}; // Couleur de remplissage lors du survol, assurez-vous que cette couleur est définie dans votre `_colors.scss`
+    animation: fillHeartHover 2s forwards;
+  }
+}
+
+@keyframes fillHeartHover {
+  to {
+    color: #{colors.$fill-color}; // Assurez-vous que cette couleur est bien définie dans `_colors.scss`
+  }
+}
+
+@mixin base-button {
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  @include box-shadow;
+  @include gradient;
+  &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+}

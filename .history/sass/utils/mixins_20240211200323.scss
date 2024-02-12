@@ -1,0 +1,75 @@
+@use "./colors";
+
+@mixin gradient {
+  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+}
+
+@mixin box-shadow {
+  &:hover {
+    animation: enhance-shadow 0.5s forwards;
+  }
+}
+@keyframes enhance-shadow {
+  from {
+    box-shadow: 2px 1px 14px -4px colors.$light-grey;
+  }
+  to {
+    // Intensifie l'ombre pour l'effet animé
+    box-shadow: 2px 1px 24px -4px colors.$light-grey;
+  }
+}
+
+@mixin change-zoom {
+  transform: scale(1.02);
+}
+@mixin font-awesome($font-weight: 400) {
+  font-family: "Font Awesome 5 Free";
+  font-weight: $font-weight;
+}
+
+// Mixin SASS pour l'animation du cœur
+@mixin heart-animated($couleur-plein: purple, $couleur-vide: grey) {
+  position: relative;
+  width: 1em; // Assurez-vous que la largeur correspond à la taille de vos icônes
+  height: 1em; // Assurez-vous que la hauteur correspond à la taille de vos icônes
+  display: inline-block;
+
+  // État de base avec cœur vide
+  &:before {
+    content: "\f004"; // Code Unicode de Font Awesome pour cœur vide
+    font-family: "Font Awesome 5 Free"; // Assurez-vous d'utiliser la bonne famille de polices
+    font-weight: 300; // Font Awesome 5 utilise 900 pour solide et 300 pour régulier
+    color: $couleur-vide;
+    position: absolute;
+  }
+
+  // État de survol avec cœur plein
+  &:hover::after {
+    content: "\f004"; // Code Unicode de Font Awesome pour cœur plein
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; // Font Awesome 5 utilise 900 pour solide
+    color: $couleur-plein;
+    position: absolute;
+  }
+}
+
+// Application du mixin à la classe de l'icône de cœur
+.heart-icon-empty {
+  @include heart-animated;
+}
+
+@mixin base-button {
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  @include box-shadow;
+  @include gradient;
+  &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+}

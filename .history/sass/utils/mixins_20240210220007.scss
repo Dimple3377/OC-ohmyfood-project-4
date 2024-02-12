@@ -1,0 +1,49 @@
+// Importation du fichier de couleurs avec les variables de couleur définies
+@use "./colors";
+
+// Mixin pour appliquer un gradient. Ce mixin est généralement utilisé pour les arrière-plans.
+@mixin gradient {
+  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+}
+
+// Mixin pour appliquer une ombre portée.
+@mixin box-shadow {
+  box-shadow: 2px 1px 14px -4px colors.$light-grey;
+}
+
+// Mixin pour changer légèrement de taille (zoom) lors du survol.
+@mixin change-zoom {
+  transform: scale(1.02);
+}
+
+// Mixin pour appliquer le style de base de Font Awesome aux icônes.
+@mixin font-awesome($font-weight: 400) {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: $font-weight;
+}
+
+// Mixin pour le style de l'icône de cœur. Nous ajoutons un effet de survol ici.
+@mixin heart {
+  @include font-awesome(400);
+  position: relative;
+  // Ajout d'une transition douce pour le changement de couleur
+  transition: color 0.3s ease;
+
+  // Couleur par défaut de l'icône. Utilisation de la couleur de variables SASS.
+  color: colors.$light-grey;
+
+  // Ajout de l'effet de survol spécifique pour changer la couleur de l'icône.
+  &:hover {
+    color: colors.$primary;
+  }
+}
+
+// Utilisation du mixin pour les icônes de cœur. Ajoutez cette classe à vos icônes dans le HTML.
+.heart-icon {
+  @include heart;
+}

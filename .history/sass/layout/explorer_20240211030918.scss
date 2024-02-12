@@ -1,0 +1,73 @@
+@use "../utils/zoom";
+@use "../utils/mixins";
+@use "../utils/colors";
+@use "../utils/variables";
+
+.explorer {
+  text-align: center;
+  margin-bottom: 1rem;
+
+  h2 {
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+  & button {
+    @include mixins.base-button;
+    transition: box-shadow 0.3s ease;
+    transform: scale(1);
+
+    &:hover {
+      animation: shadow-pop 0.5s forwards;
+      transform: scale(1);
+    }
+  }
+}
+
+@keyframes shadow-pop {
+  0% {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+  }
+}
+
+.loader {
+  $animation-length: 1s;
+  $animation-count: 3;
+  position: fixed;
+  display: grid;
+  place-items: center;
+  background-color: #fff;
+  height: 100vh;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.9;
+  animation: disappear 200ms $animation-length * $animation-count forwards;
+  transform-origin: top;
+  &::after {
+    content: "";
+    height: 100px;
+    width: 100px;
+    border-right: 5px solid transparent;
+    border-top: 5px solid colors.$purple;
+    border-radius: 50%;
+    animation: spin $animation-length infinite ease-in-out;
+    animation-iteration-count: $animation-count;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,93 @@
+@use "./colors";
+
+@mixin gradient {
+  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+}
+
+@mixin box-shadow {
+  &:hover {
+    animation: enhance-shadow 0.5s forwards;
+  }
+}
+@keyframes enhance-shadow {
+  from {
+    box-shadow: 2px 1px 14px -4px colors.$light-grey;
+  }
+  to {
+    // Intensifie l'ombre pour l'effet animé
+    box-shadow: 2px 1px 24px -4px colors.$light-grey;
+  }
+}
+
+@mixin heart-animation {
+  .card__description {
+    display: flex;
+    justify-content: space-between; // Sépare le contenu du texte et l'icône de cœur
+    align-items: center; // Centre les éléments verticalement
+
+    // Ici, vous pouvez ajouter d'autres styles pour .card__description si nécessaire
+  }
+  .heart__icon {
+    position: relative;
+
+    i.far {
+      // Cœur vide
+      transition: opacity 0.3s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1; // S'assurer que le cœur vide est au-dessus pour le hover
+    }
+
+    i.fas {
+      // Cœur plein
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0; // Le cœur plein est en dessous du cœur vide
+    }
+
+    &:hover {
+      i.far {
+        // Cacher le cœur vide au survol du .heart__icon
+        opacity: 0;
+      }
+
+      i.fas {
+        // Montrer le cœur plein au survol du .heart__icon
+        opacity: 1;
+        z-index: 2; // Élever le z-index pour afficher au-dessus lors du survol
+      }
+    }
+  }
+}
+
+.card {
+  @include heart-animation;
+}
+
+@mixin change-zoom {
+  transform: scale(1.02);
+}
+@mixin font-awesome($font-weight: 400) {
+  font-family: "Font Awesome 5 Free";
+  font-weight: $font-weight;
+}
+
+@mixin base-button {
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  @include box-shadow;
+  @include gradient;
+  &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+}

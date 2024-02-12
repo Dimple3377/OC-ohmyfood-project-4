@@ -1,0 +1,70 @@
+@use "./colors";
+
+@mixin gradient {
+  background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
+}
+
+@mixin box-shadow {
+  box-shadow: 2px 1px 14px -4px #{colors.$light-grey};
+}
+
+@mixin change-zoom {
+  transform: scale(1.02);
+}
+
+@mixin font-awesome($font-weight: 400) {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: $font-weight;
+}
+
+// Nouveaux mixins pour les icônes de cœur
+@mixin heart-icon-empty {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+
+  .card__description:hover & {
+    opacity: 0;
+  }
+}
+
+@mixin heart-icon-filled {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  .card__description:hover & {
+    opacity: 1;
+  }
+}
+
+// Application des nouveaux mixins
+.heart-icon-empty {
+  @include heart-icon-empty;
+}
+
+.heart-icon-filled {
+  @include heart-icon-filled;
+}
+
+@mixin base-button {
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  @include box-shadow;
+  @include gradient;
+  &:hover {
+    @include change-zoom;
+    opacity: 0.9;
+  }
+}

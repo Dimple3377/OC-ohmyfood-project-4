@@ -1,0 +1,52 @@
+@use "../utils/mixins";
+@use "../utils/variables";
+@use "../utils/colors";
+
+.process {
+  counter-reset: steps;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 2rem 2rem;
+  background-color: white;
+  @media (min-width: variables.$breakpoint) {
+    padding: 1rem 10rem 2rem 10rem;
+  }
+
+  & ol {
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+    margin: auto;
+    flex-direction: column;
+    @media (min-width: variables.$breakpoint) {
+      flex-direction: row;
+      width: 90%;
+    }
+
+    & li {
+      // Styles de base pour li...
+      position: relative;
+      font-weight: bold;
+      list-style-type: none;
+      background-color: #f6f6f6;
+      padding: 1.7rem 2rem;
+      flex-grow: 0.77;
+      border-radius: 1rem;
+      @include mixins.box-shadow;
+
+      // Styles spécifiques aux icônes dans li
+      & i.fas {
+        margin-right: 1rem;
+        color: colors.$light-grey; // Couleur par défaut des icônes
+        font-size: 1.5rem;
+        // Ajoutez une transition pour un changement de couleur doux
+        transition: color 0.3s ease;
+
+        // Cible spécifiquement l'icône au survol pour changer sa couleur
+        &:hover {
+          color: colors.$purple;
+        }
+      }
+    }
+  }
+}
