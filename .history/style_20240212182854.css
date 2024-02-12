@@ -618,12 +618,12 @@ body {
   }
 }
 
-.order {
+section.order {
   height: 10vh;
   display: grid;
   place-items: center;
 }
-.order button {
+section.order button {
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -633,10 +633,10 @@ body {
   cursor: pointer;
   background-image: linear-gradient(180deg, #ff79da 0%, #9356dc 120%);
 }
-.order button:hover {
+section.order button:hover {
   animation: enhance-shadow 0.5s forwards;
 }
-.order button:hover {
+section.order button:hover {
   opacity: 0.9;
   cursor: pointer;
 }

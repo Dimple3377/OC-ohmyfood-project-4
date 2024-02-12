@@ -6,7 +6,6 @@
 body {
   background-color: colors.$brightgrey;
 }
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -17,7 +16,6 @@ body {
     transform: translateY(0);
   }
 }
-
 #page-lapalette {
   .fa-arrow-left::before {
     position: absolute;
@@ -57,7 +55,7 @@ body {
     @include mixins.heart-animation;
     .heart__icon {
       right: 35%;
-      top: 38%;
+      top: 40%;
     }
     @media (max-width: #{variables.$breakpoint}) {
       .heart__icon {
@@ -98,28 +96,32 @@ body {
         background-color: colors.$tertiary;
       }
     }
-
     .menus__category {
-      overflow: hidden;
-      opacity: 0;
-      animation: fadeInUp 0.5s ease forwards;
-      @for $i from 1 through 3 {
-        &:nth-of-type(#{$i}) {
-          animation-delay: 0.5s * $i;
-        }
-      }
-      @media (min-width: #{variables.$breakpoint}) {
-        margin: auto;
-        min-width: 40rem;
-      }
+      animation-name: fadeInUp;
+      animation-duration: 1s;
+      animation-fill-mode: both; /* Garde l'état final après l'animation */
+      opacity: 0; /* Commencez par cacher les éléments */
     }
 
+    .menus__category:nth-child(1) {
+      animation-delay: 0.5s; /* Décalage pour le premier groupe */
+    }
+
+    .menus__category:nth-child(2) {
+      animation-delay: 1.5s; /* Décalage pour le deuxième groupe */
+    }
+
+    .menus__category:nth-child(3) {
+      animation-delay: 2.5s; /* Décalage pour le troisième groupe */
+    }
     .menus-items {
       display: flex;
       margin-block: 1rem;
       background-color: white;
       border-radius: 1rem;
       filter: drop-shadow(2px 2px 2px #{colors.$brightgrey});
+      animation: appear 1s;
+      animation-fill-mode: both;
 
       .menus-items__description {
         padding: 1rem;
@@ -176,7 +178,7 @@ body {
   }
 }
 
-.order {
+section.order {
   height: 10vh;
   display: grid;
   place-items: center;
