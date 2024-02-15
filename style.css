@@ -454,7 +454,7 @@ body {
   cursor: pointer;
   background-color: #f6f6f6;
   border-radius: 2rem 2rem 0 0;
-  padding: 2rem 1rem;
+  padding: 2rem;
 }
 #page-lapalette .restaurant__title h2 {
   margin: 0;
@@ -498,8 +498,9 @@ body {
   }
   #page-lapalette .restaurant__title h2 {
     padding: 0;
-    margin-right: 8rem;
+    margin-right: 7rem;
     white-space: nowrap;
+    font-size: 1.7rem;
   }
 }
 #page-lapalette .restaurant-main {
