@@ -8,8 +8,8 @@
     flex-direction: column;
     margin: auto;
     background-color: colors.$brightgrey;
-
-    border: 0.5rem solid colors.$brightgrey;
+    margin-bottom: 2rem;
+    border: 0.5rem solid $brightgrey;
     @media (min-width: variables.$breakpoint) {
       flex-wrap: wrap;
     }

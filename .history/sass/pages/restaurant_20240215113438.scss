@@ -81,7 +81,6 @@ body {
   .menus {
     display: grid;
     gap: 1rem;
-    border: 0.5rem solid colors.$brightgrey;
     @media (min-width: variables.$breakpoint) {
       grid-template-columns: 1fr;
     }

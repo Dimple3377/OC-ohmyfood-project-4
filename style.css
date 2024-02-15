@@ -84,7 +84,7 @@ header {
     box-shadow: 2px 1px 24px -4px #7e7e7e;
   }
 }
-@keyframes fillHeart {
+/*@keyframes fillHeart {
   0% {
     opacity: 0;
   }
@@ -95,6 +95,7 @@ header {
     opacity: 1;
   }
 }
+
 @keyframes emptyHeart {
   from {
     opacity: 1;
@@ -102,7 +103,7 @@ header {
   to {
     opacity: 0;
   }
-}
+}*/
 .card__description {
   position: relative;
   padding: 2%;
@@ -289,7 +290,7 @@ header {
   flex-direction: column;
   margin: auto;
   background-color: #f6f6f6;
-  margin-bottom: 2rem;
+  border: 0.5rem solid #f6f6f6;
 }
 @media (min-width: 1024px) {
   #homepage .menus {
@@ -415,7 +416,7 @@ footer h2 {
 }
 
 body {
-  background-color: #f6f6f6;
+  background-color: white;
 }
 
 @keyframes fadeInUp {
@@ -496,17 +497,21 @@ body {
     right: calc(50% - 4em);
   }
   #page-lapalette .restaurant__title h2 {
-    margin-right: 5rem;
+    padding: 0;
+    margin-right: 8rem;
+    white-space: nowrap;
   }
 }
 #page-lapalette .restaurant-main {
   padding: 0;
   max-width: 1000px;
   margin: auto;
+  background-color: #f6f6f6;
 }
 #page-lapalette .menus {
   display: grid;
   gap: 1rem;
+  border: 0.5rem solid #f6f6f6;
 }
 @media (min-width: 1024px) {
   #page-lapalette .menus {
